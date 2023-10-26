@@ -208,7 +208,7 @@ def run(mode='rgb', load_model='', sample_mode='oversample', frequency=16,
                 rgb_zipdata = zipfile.ZipFile(os.path.join(frames_dir, 'img.zip'), 'r')
                 rgb_files = [i for i in rgb_zipdata.namelist() if i.startswith('img')]
             else:
-                rgb_files = [i for i in os.listdir(frames_dir) if i.startswith('img')]
+                rgb_files = [i for i in os.listdir(os.path.join(frames_dir, "images")) if i.startswith('img')]
 
             rgb_files.sort()
             frame_cnt = len(rgb_files)
@@ -221,8 +221,8 @@ def run(mode='rgb', load_model='', sample_mode='oversample', frequency=16,
                 flow_y_zipdata = zipfile.ZipFile(os.path.join(frames_dir, 'flow_y.zip'), 'r')
                 flow_y_files = [i for i in flow_y_zipdata.namelist() if i.startswith('y_')]
             else:
-                flow_x_files = [i for i in os.listdir(frames_dir) if i.startswith('flow_x')]
-                flow_y_files = [i for i in os.listdir(frames_dir) if i.startswith('flow_y')]
+                flow_x_files = [i for i in os.listdir(os.path.join(frames_dir, "flows")) if i.startswith('flow_x')]
+                flow_y_files = [i for i in os.listdir(os.path.join(frames_dir, "flows")) if i.startswith('flow_y')]
 
             flow_x_files.sort()
             flow_y_files.sort()
